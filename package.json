@@ -1,0 +1,65 @@
+{
+  "name": "@tokentop/plugin-sdk",
+  "version": "0.1.0",
+  "description": "SDK for building tokentop plugins — providers, agents, themes, and notifications",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./types": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/types/index.js"
+    },
+    "./helpers": {
+      "types": "./dist/helpers/index.d.ts",
+      "import": "./dist/helpers/index.js"
+    },
+    "./testing": {
+      "types": "./dist/testing/index.d.ts",
+      "import": "./dist/testing/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "bun run build:types && bun run build:js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "bun build src/index.ts src/types/index.ts src/helpers/index.ts src/testing/index.ts --outdir dist --target node --format esm --splitting",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "bun run clean && bun run build"
+  },
+  "keywords": [
+    "tokentop",
+    "plugin",
+    "sdk",
+    "ai",
+    "llm",
+    "token-usage",
+    "cost-monitoring"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tokentopapp/plugin-sdk.git"
+  },
+  "homepage": "https://github.com/tokentopapp/tokentop",
+  "engines": {
+    "bun": ">=1.0.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.7.0"
+  },
+  "peerDependencies": {},
+  "dependencies": {}
+}
