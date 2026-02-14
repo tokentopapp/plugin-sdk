@@ -6,15 +6,15 @@ import type { NotificationPlugin } from '../types/notification.ts';
 
 type WithoutApiVersion<T> = Omit<T, 'apiVersion'>;
 
-function validateBase(plugin: { id?: string; type?: string; version?: string; meta?: { name?: string } }): void {
+function validateBase(plugin: { id?: string; type?: string; name?: string; version?: string }): void {
   if (!plugin.id || typeof plugin.id !== 'string') {
     throw new Error('Plugin must have a non-empty string "id"');
   }
   if (!/^[a-z][a-z0-9-]*$/.test(plugin.id)) {
     throw new Error(`Plugin id "${plugin.id}" must be kebab-case (lowercase letters, numbers, hyphens)`);
   }
-  if (!plugin.meta?.name) {
-    throw new Error('Plugin must have meta.name');
+  if (!plugin.name || typeof plugin.name !== 'string') {
+    throw new Error('Plugin must have a non-empty string "name"');
   }
   if (!plugin.version || !/^\d+\.\d+\.\d+/.test(plugin.version)) {
     throw new Error('Plugin must have a valid semver version (e.g. "1.0.0")');

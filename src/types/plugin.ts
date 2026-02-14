@@ -56,8 +56,8 @@ export interface PluginPermissions {
 
 /** Public-facing metadata about a plugin. */
 export interface PluginMeta {
-  /** Human-readable display name. */
-  name: string;
+  /** Plugin author name or handle. */
+  author?: string;
   /** Brief description of what the plugin does. */
   description?: string;
   /** Plugin homepage or documentation URL. */
@@ -122,11 +122,14 @@ export interface BasePlugin {
   /** Plugin type discriminator. */
   readonly type: PluginType;
 
+  /** Human-readable display name. */
+  readonly name: string;
+
   /** Semantic version string of this plugin (e.g. `"1.0.0"`). */
   readonly version: string;
 
   /** Public-facing metadata. */
-  readonly meta: PluginMeta;
+  readonly meta?: PluginMeta;
 
   /** Required permissions. */
   readonly permissions: PluginPermissions;

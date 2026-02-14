@@ -1,4 +1,4 @@
-import type { BasePlugin, PluginLogger, ConfigField } from './plugin.ts';
+import type { BasePlugin, PluginLogger } from './plugin.ts';
 
 // ---------------------------------------------------------------------------
 // Notification Events
@@ -42,8 +42,6 @@ export interface NotificationContext {
 
 export interface NotificationPlugin extends BasePlugin {
   readonly type: 'notification';
-
-  readonly configSchema?: Record<string, ConfigField>;
 
   /** Set up the notification channel (e.g. verify webhook URL, open connection). */
   initialize(ctx: NotificationContext): Promise<void>;
