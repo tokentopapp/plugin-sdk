@@ -52,6 +52,10 @@
     "type": "git",
     "url": "https://github.com/tokentopapp/plugin-sdk.git"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "homepage": "https://github.com/tokentopapp/tokentop",
   "engines": {
     "bun": ">=1.0.0"
