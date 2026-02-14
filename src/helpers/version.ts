@@ -1,6 +1,7 @@
 import { CURRENT_API_VERSION } from '../types/plugin.ts';
+import pkg from '../../package.json';
 
-export const SDK_VERSION = '0.1.0';
+export const SDK_VERSION: string = pkg.version;
 
 export { CURRENT_API_VERSION };
 

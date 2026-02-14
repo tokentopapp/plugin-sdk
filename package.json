@@ -46,7 +46,7 @@
     "token-usage",
     "cost-monitoring"
   ],
-  "author": "",
+  "author": "Nigel Bazzeghin <nbazzeghin@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
