@@ -24,8 +24,9 @@ import {
 export default createProviderPlugin({
   id: 'my-provider',
   type: 'provider',
+  name: 'My Provider',
   version: '1.0.0',
-  meta: { name: 'My Provider', brandColor: '#3b82f6' },
+  meta: { brandColor: '#3b82f6' },
   permissions: {
     network: { enabled: true, allowedDomains: ['api.example.com'] },
     env: { read: true, vars: ['MY_API_KEY'] },

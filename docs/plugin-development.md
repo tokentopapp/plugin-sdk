@@ -299,8 +299,9 @@ import { createThemePlugin } from '@tokentop/plugin-sdk';
 export default createThemePlugin({
   id: 'catppuccin',
   type: 'theme',
+  name: 'Catppuccin',
   version: '1.0.0',
-  meta: { name: 'Catppuccin', description: 'Soothing pastel theme' },
+  meta: { description: 'Soothing pastel theme' },
   permissions: {},
   theme: {
     colorScheme: 'dark',
@@ -361,8 +362,8 @@ import { createNotificationPlugin } from '@tokentop/plugin-sdk';
 export default createNotificationPlugin({
   id: 'slack-webhook',
   type: 'notification',
+  name: 'Slack Webhook',
   version: '1.0.0',
-  meta: { name: 'Slack Webhook' },
   permissions: {
     network: { enabled: true, allowedDomains: ['hooks.slack.com'] },
   },
