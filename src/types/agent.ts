@@ -7,12 +7,16 @@ import type { Credentials, CredentialResult } from './provider.ts';
 // ---------------------------------------------------------------------------
 
 export interface AgentConfig {
-  /** Display name for this coding agent (e.g. "Claude Code", "Cursor"). */
+  /** Display name for this coding agent (e.g. "OpenCode", "Cursor"). */
   name: string;
+  /** CLI command that launches the agent (for display/detection). */
+  command?: string;
   /** Path to the agent's config directory (for display/debugging). */
   configPath?: string;
   /** Path to the agent's session storage. */
   sessionPath?: string;
+  /** Path to the agent's auth file (for credential reading). */
+  authPath?: string;
 }
 
 // ---------------------------------------------------------------------------
@@ -49,6 +53,8 @@ export interface SessionParseOptions {
   sessionId?: string;
   timePeriod?: 'session' | 'daily' | 'weekly' | 'monthly';
   limit?: number;
+  /** Epoch ms — only return sessions updated after this timestamp. */
+  since?: number;
 }
 
 export interface SessionUsageData {

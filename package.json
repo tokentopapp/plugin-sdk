@@ -31,7 +31,7 @@
   "scripts": {
     "build": "bun run build:types && bun run build:js",
     "build:types": "tsc --emitDeclarationOnly",
-    "build:js": "bun build src/index.ts src/types/index.ts src/helpers/index.ts src/testing/index.ts --outdir dist --target node --format esm --splitting",
+    "build:js": "bun build src/index.ts --outdir dist --target node --format esm && bun build src/types/index.ts --outdir dist/types --target node --format esm && bun build src/helpers/index.ts --outdir dist/helpers --target node --format esm && bun build src/testing/index.ts --outdir dist/testing --target node --format esm",
     "typecheck": "tsc --noEmit",
     "test": "bun test",
     "clean": "rm -rf dist",
