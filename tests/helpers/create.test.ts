@@ -43,6 +43,7 @@ const validTheme = {
   id: 'test-theme',
   type: 'theme' as const,
   theme: {
+    family: 'test-theme',
     colorScheme: 'dark' as const,
     colors: {
       bg: '#000', fg: '#fff', border: '#333', borderFocused: '#666',

@@ -22,6 +22,8 @@ export interface ThemeColors {
 
   headerBg: string;
   headerFg: string;
+  headerTitleColor?: string;
+  headerTitleAccentColor?: string;
   statusBarBg: string;
   statusBarFg: string;
 
@@ -59,15 +61,11 @@ export interface ThemePlugin extends BasePlugin {
   readonly type: 'theme';
 
   readonly theme: {
+    family?: string;
     colorScheme: 'light' | 'dark';
     colors: ThemeColors;
     components?: ThemeComponents;
-    /**
-     * If `true`, core uses this theme when no user preference is set.
-     * If multiple themes set this, `priority` breaks the tie (higher wins).
-     */
     isDefault?: boolean;
-    /** Tie-breaker for default theme selection. Higher wins. Default: `0`. */
     priority?: number;
   };
 }
