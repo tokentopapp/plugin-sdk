@@ -1,5 +1,7 @@
 # @tokentop/plugin-sdk
 
+[![npm](https://img.shields.io/npm/v/@tokentop/plugin-sdk?style=flat-square&color=CB3837&logo=npm)](https://www.npmjs.com/package/@tokentop/plugin-sdk)
+[![CI](https://img.shields.io/github/actions/workflow/status/tokentopapp/plugin-sdk/ci.yml?style=flat-square&label=CI)](https://github.com/tokentopapp/plugin-sdk/actions/workflows/ci.yml)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
 
@@ -94,20 +96,19 @@ const creds = await plugin.auth.discover(ctx);
 assert(creds.ok);
 ```
 
-## Publishing
+## Naming Convention
 
-| Plugin type | npm package name |
-|-------------|------------------|
-| Provider | `@tokentop/provider-<name>` |
-| Agent | `@tokentop/agent-<name>` |
-| Theme | `@tokentop/theme-<name>` |
-| Notification | `@tokentop/notification-<name>` |
+| Tier | Pattern | Example |
+|------|---------|---------|
+| Official | `@tokentop/{type}-<name>` | `@tokentop/agent-opencode` |
+| Community | `tokentop-{type}-<name>` | `tokentop-provider-replicate` |
+| Scoped community | `@scope/tokentop-{type}-<name>` | `@myname/tokentop-theme-catppuccin` |
 
 ## Versioning
 
 | Version | What it is |
 |---------|------------|
-| SDK semver (`0.1.0`) | Package version on npm. Normal semver rules. |
+| SDK semver (`1.1.0`) | Package version on npm. Normal semver rules. |
 | `apiVersion` (`2`) | Plugin contract version. Core checks at load time. Bumped rarely. |
 
 Use `CURRENT_API_VERSION` and `isCompatible()` to check compatibility. The `createProviderPlugin()` / `createAgentPlugin()` / etc. helpers stamp `apiVersion` automatically.
@@ -115,6 +116,10 @@ Use `CURRENT_API_VERSION` and `isCompatible()` to check compatibility. The `crea
 ## Documentation
 
 See [docs/plugin-development.md](docs/plugin-development.md) for the full API reference covering all plugin types, credential discovery, lifecycle hooks, configuration schemas, and testing patterns.
+
+## Contributing
+
+See the [Contributing Guide](https://github.com/tokentopapp/.github/blob/main/CONTRIBUTING.md).
 
 ## License
 
