@@ -1,8 +1,8 @@
 blank_issues_enabled: true
 contact_links:
+  - name: tokentop core issues
+    url: https://github.com/tokentopapp/tokentop/issues
+    about: For issues with the tokentop app itself, file there instead
   - name: Documentation
     url: https://github.com/tokentopapp/plugin-sdk/tree/main/docs
     about: Check the docs before filing an issue
-  - name: Main tokentop repo
-    url: https://github.com/tokentopapp/tokentop/issues
-    about: For issues with the tokentop app itself, file there instead
