@@ -72,6 +72,15 @@ export interface SessionUsageData {
   sessionUpdatedAt?: number;
   projectPath?: string;
   cost?: number;
+  /**
+   * Optional plugin-defined metadata passed through to the core.
+   * Plugins can use this to signal data quality, enrichment status,
+   * or other plugin-specific information the UI may choose to render.
+   *
+   * Known keys (convention, not enforced):
+   *   - `isEstimated` (boolean) — true when token counts are local estimates
+   */
+  metadata?: Record<string, unknown>;
 }
 
 // ---------------------------------------------------------------------------
