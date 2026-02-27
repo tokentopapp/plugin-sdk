@@ -50,8 +50,9 @@ export type {
 } from './agent.ts';
 
 export type {
+  ColorScheme,
+  ColorSchemePreference,
   ThemeColors,
-  GaugeColors,
   ThemeComponents,
   ThemePlugin,
 } from './theme.ts';

@@ -1,56 +1,63 @@
 import type { BasePlugin } from './plugin.ts';
 
 // ---------------------------------------------------------------------------
+// Color Scheme
+// ---------------------------------------------------------------------------
+
+export type ColorScheme = 'light' | 'dark';
+
+export type ColorSchemePreference = 'auto' | 'light' | 'dark';
+
+// ---------------------------------------------------------------------------
 // Theme Colors
 // ---------------------------------------------------------------------------
 
 export interface ThemeColors {
-  bg: string;
-  fg: string;
-  border: string;
-  borderFocused: string;
-
+  background: string;
+  foreground: string;
+  text: string;
+  textMuted: string;
+  textSubtle: string;
   primary: string;
   secondary: string;
   accent: string;
-  muted: string;
-
   success: string;
   warning: string;
   error: string;
   info: string;
-
-  headerBg: string;
-  headerFg: string;
-  headerTitleColor?: string;
-  headerTitleAccentColor?: string;
-  statusBarBg: string;
-  statusBarFg: string;
-
-  tableBg: string;
-  tableHeaderBg: string;
-  tableHeaderFg: string;
-  tableRowBg: string;
-  tableRowAltBg: string;
-  tableRowFg: string;
-  tableSelectedBg: string;
-  tableSelectedFg: string;
+  border: string;
+  borderMuted: string;
+  selection: string;
+  highlight: string;
+  gaugeBackground: string;
+  gaugeFill: string;
+  gaugeWarning: string;
+  gaugeDanger: string;
 }
 
 // ---------------------------------------------------------------------------
 // Theme Component Overrides
 // ---------------------------------------------------------------------------
 
-export interface GaugeColors {
-  low: string;
-  medium: string;
-  high: string;
-  critical: string;
-  bg: string;
-}
-
 export interface ThemeComponents {
-  gauge?: GaugeColors;
+  header?: {
+    background?: string;
+    foreground?: string;
+    titleColor?: string;
+    titleAccentColor?: string;
+  };
+  statusBar?: {
+    background?: string;
+    foreground?: string;
+  };
+  commandPalette?: {
+    background?: string;
+    border?: string;
+  };
+  gauge?: {
+    height?: number;
+    borderRadius?: number;
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -59,13 +66,8 @@ export interface ThemeComponents {
 
 export interface ThemePlugin extends BasePlugin {
   readonly type: 'theme';
-
-  readonly theme: {
-    family?: string;
-    colorScheme: 'light' | 'dark';
-    colors: ThemeColors;
-    components?: ThemeComponents;
-    isDefault?: boolean;
-    priority?: number;
-  };
+  readonly family: string;
+  readonly colorScheme: ColorScheme;
+  readonly colors: ThemeColors;
+  readonly components?: ThemeComponents;
 }
