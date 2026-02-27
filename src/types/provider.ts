@@ -133,6 +133,10 @@ export interface ProviderUsageData {
   cost?: {
     actual?: CostBreakdown;
     estimated?: CostBreakdown;
+    /** Session-derived daily cost (today only). Set by core enrichment. */
+    estimatedDaily?: CostBreakdown;
+    /** Session-derived monthly cost (MTD). Set by core enrichment. */
+    estimatedMonthly?: CostBreakdown;
     source: 'api' | 'estimated';
   };
   fetchedAt: number;
