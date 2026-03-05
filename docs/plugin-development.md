@@ -498,6 +498,98 @@ assert(usage.cost?.actual?.total === 12.34);
 | `createMockHttpClient({ mocks })` | HTTP client that returns canned responses |
 | `createMockStorage(initial)` | In-memory KV store |
 
+## Local Development
+
+Before publishing to npm, you'll want to run your plugin inside tokentop to see it working end-to-end. There are three ways to load a local plugin.
+
+### Option 1: The `--plugin` flag (quickest)
+
+Point tokentop at your plugin's directory (or file) for a single run:
+
+```bash
+# Load a directory-based plugin (resolves entry point automatically)
+ttop --plugin ./my-plugin
+
+# Load a single-file plugin
+ttop --plugin ./my-theme.ts
+
+# Load multiple plugins at once
+ttop --plugin ./my-provider --plugin ./my-theme.ts
+```
+
+This is the fastest way to iterate. The flag is repeatable and accepts both absolute and relative paths.
+
+### Option 2: The config file (`plugins.local`)
+
+For plugins you're actively developing, add the path to your tokentop config so it loads every time you start `ttop`:
+
+```json
+// ~/.config/tokentop/config.json
+{
+  "plugins": {
+    "local": [
+      "~/development/my-tokentop-provider",
+      "~/development/my-tokentop-theme/src/index.ts"
+    ]
+  }
+}
+```
+
+Paths support tilde expansion (`~/...`) and can be absolute or relative to the config directory. Each entry can be a directory or a direct file path.
+
+### Option 3: The plugins directory
+
+Drop your plugin (file or directory) into the default plugins directory:
+
+```
+~/.config/tokentop/plugins/
+├── my-theme.ts              # Single-file plugin
+└── my-provider/             # Directory-based plugin
+    ├── package.json
+    └── src/
+        └── index.ts
+```
+
+tokentop auto-discovers everything in this directory on startup. Files must end in `.ts` or `.js`. Directories are resolved using the entry point rules below.
+
+### Entry point resolution
+
+When you point tokentop at a directory, it resolves the entry point in this order:
+
+1. `package.json` — `main` field, then `exports["."]`
+2. `src/index.ts`
+3. `src/index.js`
+4. `index.ts`
+5. `index.js`
+6. `dist/index.js`
+
+For most plugins, having `"main": "src/index.ts"` in your `package.json` is all you need.
+
+### Recommended workflow
+
+```bash
+# 1. Create your plugin
+mkdir tokentop-provider-replicate && cd tokentop-provider-replicate
+bun init
+bun add @tokentop/plugin-sdk
+
+# 2. Write your plugin in src/index.ts (see examples above)
+
+# 3. Run your tests with the SDK test harness
+bun test
+
+# 4. Load it in tokentop to verify end-to-end
+ttop --plugin .
+
+# 5. When it works, publish to npm
+npm publish
+```
+
+### Tips
+
+- **Validation errors appear in the console.** If your plugin fails to load, tokentop logs the specific validation error (missing fields, wrong `apiVersion`, etc.).
+- **Disable a plugin without removing it.** Add its `id` to `config.plugins.disabled` to skip loading without deleting the path from `plugins.local`.
+- **Combine methods freely.** Auto-discovered plugins, `plugins.local` paths, and `--plugin` flags all merge together. Duplicates are handled gracefully.
 ## Publishing to npm
 
 ### Package Name Convention
