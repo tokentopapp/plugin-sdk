@@ -141,6 +141,10 @@ export interface ProviderUsageData {
   };
   fetchedAt: number;
   error?: string;
+  /** When true, the provider's API returned a rate-limit response (e.g. HTTP 429). */
+  rateLimited?: boolean;
+  /** Milliseconds the caller should wait before retrying. Parsed from Retry-After or a sensible default. */
+  retryAfterMs?: number;
 }
 
 // ---------------------------------------------------------------------------
