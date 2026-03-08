@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/tokentopapp/plugin-sdk/compare/v1.3.0...v1.4.0) (2026-03-08)
+
+
+### Features
+
+* add rateLimited and retryAfterMs to ProviderUsageData ([07e4750](https://github.com/tokentopapp/plugin-sdk/commit/07e47502173a3ff3de149112eef70d9d952e73b1))
+
 ## [1.3.0](https://github.com/tokentopapp/plugin-sdk/compare/v1.2.0...v1.3.0) (2026-02-27)
 
 
