@@ -72,6 +72,10 @@ export interface ModelPricing {
   output: number;
   cacheRead?: number;
   cacheWrite?: number;
+  longContextInput?: number;
+  longContextOutput?: number;
+  longContextCacheRead?: number;
+  longContextCacheWrite?: number;
   source?: string;
 }
 
