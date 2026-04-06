@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/tokentopapp/plugin-sdk/compare/v1.4.0...v1.5.0) (2026-04-06)
+
+
+### Features
+
+* add longContext tiered rate fields to ModelPricing ([1b2d9a8](https://github.com/tokentopapp/plugin-sdk/commit/1b2d9a8beb26f9a24646018cd2c1fe26fea195e0))
+
 ## [1.4.0](https://github.com/tokentopapp/plugin-sdk/compare/v1.3.0...v1.4.0) (2026-03-08)
 
 
